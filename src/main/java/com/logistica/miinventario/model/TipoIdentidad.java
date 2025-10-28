@@ -6,10 +6,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tipo_identidad")
 public class TipoIdentidad {
 
@@ -17,8 +21,12 @@ public class TipoIdentidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_tipo_identidad;
 
-    @Column(name = "Documento",nullable = false)
+    @Column(name = "descripcion_documento",length = 25, unique = true)
     private String descripcion;
+
+    public TipoIdentidad(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     
     public void mostrarDatos() {
