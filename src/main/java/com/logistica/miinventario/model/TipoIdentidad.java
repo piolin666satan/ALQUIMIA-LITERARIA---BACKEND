@@ -1,20 +1,17 @@
 package com.logistica.miinventario.model;
 
-import com.logistica.miinventario.model.interfaces.Registrable;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper= false)
-public class TipoIdentidad implements Registrable{
+@Table(name = "tipo_identidad")
+public class TipoIdentidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +20,7 @@ public class TipoIdentidad implements Registrable{
     @Column(name = "Documento",nullable = false)
     private String descripcion;
 
-
-    public TipoIdentidad(){
-        super();
-    }
-
-    @Override
+    
     public void mostrarDatos() {
         System.out.println("Tipo de identidad: " + id_tipo_identidad);
         System.out.println("Descripcion: " + descripcion);
