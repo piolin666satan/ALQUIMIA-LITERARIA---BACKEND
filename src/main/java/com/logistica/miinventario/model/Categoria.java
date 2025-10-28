@@ -1,7 +1,5 @@
 package com.logistica.miinventario.model;
 
-import com.logistica.miinventario.model.base.Entidad;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +11,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "categorias")
-public class Categoria extends Entidad {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +21,6 @@ public class Categoria extends Entidad {
     private String nombreCategoria;
 
 
-    @Override
     public void mostrarDatos() {
         System.out.println(" ID Categoria: " + id);
         System.out.println(" Nombre Categoría: " + nombreCategoria);

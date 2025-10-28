@@ -18,15 +18,17 @@ public class LibreriaApplication implements CommandLineRunner{
 		SpringApplication.run(LibreriaApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("\n--- CRUD BÁSICO PRODUCTO---");
-        // CREATE
-        System.out.println("1. Creando y guardando una compra....");
+@Override
+    public void run(String... args) throws Exception {
+        System.out.println("--- CRUD BÁSICO COMPRA ---");
 
-        CompraRepository productoLibro = (CompraRepository) new Compra(null, null, 0, null, null);
-        compraRepository.save(productoLibro);
-        System.out.println("Producto guardado: " + productoLibro.getClass().getName());
+        Compra compra = new Compra();
+        compra.setProducto("Lapicero");
+        compra.setMonto(2500);
+        compra.setFecha("2025-10-27");
+        compraRepository.save(compra);
+
+        System.out.println("Compra guardada: " + compra);
 	}
 
 }
