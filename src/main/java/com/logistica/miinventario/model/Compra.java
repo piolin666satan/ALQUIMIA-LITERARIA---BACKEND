@@ -6,15 +6,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "compras")
 // @EqualsAndHashCode(callSuper= false) //cuando hay "super();"
 public class Compra {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
 
     //cambios
@@ -22,11 +26,17 @@ public class Compra {
     protected double monto;
 
     //cambios
-    @Column(name = "fecha", length = 20)
+    @Column(name = "fecha", length = 20, unique = true)
     protected String fecha;
 
-    @Column(length = 50,nullable = false) //lenght para clasificarlo varchar
+    @Column(name = "producto",length = 50, unique = true) //lenght para clasificarlo varchar
     private String producto;
+
+    public Compra (double monto, String fecha, String producto) {
+        this.monto = monto;
+        this.fecha = fecha;
+        this.producto = producto;
+    }
 
     public void procesar() {
         System.out.println("Procesando compra del producto: " + producto);

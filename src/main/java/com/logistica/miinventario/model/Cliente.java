@@ -6,12 +6,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // Cliente.java
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "clientes")
 public class Cliente {
 
@@ -19,17 +23,24 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100,nullable = false)
+    @Column(name = "nombre_cliente",length = 50, unique = true)
     private String nombre;
 
-    @Column(length = 40,nullable = false)
+    @Column(name = "direccion_cliente",length = 100)
     private String direccion;
 
-    @Column(length = 20,nullable = false)
+    @Column(name = "telefono_cliente",length = 25, unique = true)
     private String telefono;
 
-    @Column(name = "Documento",nullable = false)
+    @Column(name = "numero_documento",length = 30, unique = true)
     private String numeroDocumento;
+
+    public Cliente(String nombre, String direccion, String telefono, String numeroDocumento) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.numeroDocumento = numeroDocumento;
+    }
 
     public void mostrarDatos() {
         System.out.println("Cliente:");

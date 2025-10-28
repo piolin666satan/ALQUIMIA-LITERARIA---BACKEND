@@ -3,8 +3,9 @@ package com.logistica.miinventario.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.logistica.miinventario.model.Compra;
+import com.logistica.miinventario.model.Cliente;
 
 @Repository
-public interface CompraRepository extends JpaRepository <Compra, Long> {
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+    
 }
